@@ -1,7 +1,5 @@
 package co.copper.testtask.service.asset;
 
-import java.util.Optional;
-
 import co.copper.testtask.dto.AssetDto;
 import co.copper.testtask.external.ExternalApproveService;
 import co.copper.testtask.model.Asset;
@@ -9,14 +7,22 @@ import co.copper.testtask.repository.AssetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
 public class AssetServiceImpl implements AssetService {
+
     @Autowired
     private ExternalApproveService approveService;
 
     @Autowired
     private AssetRepository assetRepository;
+
+    public AssetServiceImpl(ExternalApproveService approveService, AssetRepository assetRepository) {
+        this.assetRepository = assetRepository;
+        this.approveService = approveService;
+    }
 
     @Override
     public boolean approve(AssetDto dto) {

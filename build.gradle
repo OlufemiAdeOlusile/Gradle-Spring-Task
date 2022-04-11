@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'org.unbroken-dome.test-sets' version '4.0.0'
 }
 
 apply plugin: 'application'
@@ -8,20 +9,46 @@ group 'co.copper'
 
 mainClassName = 'co.copper.testtask.TestTaskApplication'
 
+testSets {
+    integrationTest
+}
+
+
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    compile 'org.projectlombok:lombok:1.18.10'
-    annotationProcessor 'org.projectlombok:lombok:1.18.10'
 
-    compile 'javax.xml.bind:jaxb-api:2.3.1'
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.2'
-    compile 'org.springframework.boot:spring-boot-starter-web:2.5.2'
-    compile 'com.h2database:h2:1.4.200'
+dependencies {
+    implementation 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.2'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.2'
+    implementation 'com.h2database:h2:1.4.200'
+    implementation 'org.postgresql:postgresql:42.1.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation 'org.mockito:mockito-core:2.1.0'
+    testImplementation 'org.springframework:spring-test:5.3.18'
+    implementation 'org.springframework:spring-context:5.3.18'
+    integrationTestImplementation 'org.springframework.boot:spring-boot-test:2.6.6'
+    integrationTestImplementation 'org.springframework.boot:spring-boot-test-autoconfigure:2.6.6'
+    integrationTestImplementation 'com.jayway.jsonpath:json-path-assert:2.7.0'
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+    testLogging {
+        exceptionFormat "full"
+        events "started", "skipped", "passed", "failed"
+        showStandardStreams true
+    }
 }
 
 test {
-    useJUnitPlatform()
+    reports {
+        junitXml.enabled = false
+        html.enabled = true
+    }
 }

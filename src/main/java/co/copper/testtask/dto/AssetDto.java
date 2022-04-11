@@ -1,11 +1,11 @@
 package co.copper.testtask.dto;
 
-import java.math.BigDecimal;
-
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 
 
 @Data

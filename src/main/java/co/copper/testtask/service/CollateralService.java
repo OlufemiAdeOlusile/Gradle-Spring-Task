@@ -1,12 +1,12 @@
 package co.copper.testtask.service;
 
-import java.util.Optional;
-
 import co.copper.testtask.dto.AssetDto;
 import co.copper.testtask.dto.Collateral;
 import co.copper.testtask.service.asset.AssetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 
 // TODO: reimplement this
@@ -14,6 +14,10 @@ import org.springframework.stereotype.Service;
 public class CollateralService {
     @Autowired
     private AssetService assetService;
+
+    protected CollateralService(AssetService assetService) {
+        this.assetService = assetService;
+    }
 
     @SuppressWarnings("ConstantConditions")
     public Long saveCollateral(Collateral object) {

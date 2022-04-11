@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = AssetDto.class)
-})
+        @JsonSubTypes.Type(value = AssetDto.class)})
 public interface Collateral {
 }

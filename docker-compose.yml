@@ -1,0 +1,12 @@
+services:
+  gradle:
+    image: gradle
+    command:
+      - gradle
+      - integrationTest
+      - test
+    volumes:
+      - '$PWD:/home/gradle/project'
+    working_dir: /home/gradle/project
+    user: gradle
+version: '3'
