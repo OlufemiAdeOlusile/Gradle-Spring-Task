@@ -1,10 +1,8 @@
 services:
   gradle:
     image: gradle
-    command:
-      - gradle
-      - integrationTest
-      - test
+    command: >
+      bash -c "gradle && gradle build && gradle test && gradle  integrationTest"
     volumes:
       - '$PWD:/home/gradle/project'
     working_dir: /home/gradle/project

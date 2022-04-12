@@ -1,10 +1,12 @@
 # sdet-test-task
-Installation requirements:
+Test requirements:
 
-To run service use `docker-compose up` on the root folder
+To run service and tests run `docker-compose up` on the root folder
 
-Unit test will be run 
-Integration test will be run with mock server
+Unit test will be run `AssetServiceImplTest` && `CollateralServiceTest`
+
+Integration test will be run via the MockMvc `CollateralObjectControllerTest`
+
 
 
 
